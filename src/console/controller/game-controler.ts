@@ -20,7 +20,7 @@ export class GameController {
     this.start();
   }
 
-  private async guess(dishes: CategoryDish[] | Dish[]) {
+  private async guess(dishes: CategoryDish[] | Dish[]): Promise<boolean> {
     const view = new Guess();
 
     for (const dish of dishes) {
@@ -42,7 +42,7 @@ export class GameController {
     await (new Sucess()).render();
   }
 
-  private async createDishCategory() {
+  private async createDishCategory(): Promise<void> {
     const dish = await this.createDish();
 
     const lastDish = categoriesDish[categoriesDish.length - 1];
